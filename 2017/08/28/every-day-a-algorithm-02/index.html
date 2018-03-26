@@ -1,40 +1,269 @@
-extends base
-
-block title
-  title= page.title + " | " + config.title
-
-block main
-
-  // gallery that comes before the header
-  if page.photos
-     if page.photos.length
-      .article-gallery
-        .article-gallery-photos.container
-          for photo in page.photos
-            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
-              img(src=url_for(photo), itemprop="image")
-
-  .wrapper
-    .container.post-header
-      h1: = page.title
-
-  .wrapper
-    .container.meta
-      .post-time= page.date.format(config.date_format)
-      if (page.categories && page.categories.length)
-        .post-categories
-          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
-      if (page.tags && page.tags.length)
-        .post-tags
-          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
-  article
-    .container.post
-      != page.content
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head prefix="og: http://ogp.me/ns#">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <title>every day a algorithm 02 | 记录点点滴滴</title>
 
-    // comment system
-    .container
-      hr
-      include _partial/comments
+    <!-- Open Graph -->
+    <meta name="description" content="pat 1007     导语：最大子序列本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。">
+<meta name="keywords" content="algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="every day a algorithm 02">
+<meta property="og:url" content="http://yoursite.com/2017/08/28/every-day-a-algorithm-02/index.html">
+<meta property="og:site_name" content="记录点点滴滴">
+<meta property="og:description" content="pat 1007     导语：最大子序列本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-27T16:25:21.426Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="every day a algorithm 02">
+<meta name="twitter:description" content="pat 1007     导语：最大子序列本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。">
 
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Person",
+  "email": "mailto:",
+  "image": "",
+  "name": "Zoubin",
+  "url": "http://yoursite.com"
+}
+</script>
+    <script>
+    var algoliaEnabled = false;
+    
+</script>
+
+    
+
+    
+    
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    
+    
+    
+        <!-- stylesheets list from config.yml -->
+        
+        <link rel="stylesheet" href="/css/aloha.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.css">
+        
+        <link rel="stylesheet" href="//cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.min.css">
+        
+    
+
+</head>
+<body id="body" style="margin-bottom: 0;" class="pushable">
+
+    <div class="ui top fixed menu">
+        <a class="item" id="menu-icon"><i class="sidebar icon"></i></a>
+    </div>
+
+    <div id="menu-sidebar" class="ui left vertical sidebar menu">
+
+    <div id="sidebar-top">
+        <div class="content">
+            <h3>记录点点滴滴</h3>
+        </div>
+    </div>
+    <div class="ui container sidebar-card">
+    <div class="ui people shape content">
+        <div class="active side">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium bordered image" src="/images/avatar.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Zoubin</a>
+                    
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                        
+                    </div>
+
+                </div>
+                <div class="extra content">
+                    <div class="ui list">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+    
+    
+
+    
+
+    
+    <a href="/index.html" class="item" >
+        <i class="home icon"></i>
+        HOME
+    </a>
+
+    
+
+    
+</div>
+
+    <div class="pusher body-content">
+        <div id="content" class="ui main container">
+            <!--<div class="ui one column grid">-->
+                <!--<div class="column">-->
+                    <!--<div class="ui main container">-->
+                        <div id="post-every-day-a-algorithm-02" class="ui main container article-type-post">
+
+    
+
+    <div class="ui divided grid">
+
+        <div class="two column row" id="article-content">
+
+            <div class="thirteen wide computer thirteen wide tablet sixteen wide mobile column">
+                
+
+<h1 class="ui header">
+    
+    every day a algorithm 02
+</h1>
+
+
+
+                <div class="article-inner">
+
+                    <div class="article-entry" itemprop="articleBody">
+                        
+                        <blockquote>
+<p><a href="https://www.patest.cn/contests/pat-a-practise/1007" target="_blank" rel="external">pat 1007</a>  </p>
+</blockquote>
+<hr>
+<h2 id="&#x5BFC;&#x8BED;&#xFF1A;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;"><a href="#&#x5BFC;&#x8BED;&#xFF1A;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;" class="headerlink" title="&#x5BFC;&#x8BED;&#xFF1A;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;"></a>&#x5BFC;&#x8BED;&#xFF1A;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;</h2><h4 id="&#x672C;&#x9898;&#x662F;&#x4E00;&#x9053;&#x6BD4;&#x8F83;&#x7ECF;&#x5178;&#x7684;&#x6C42;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x9898;&#xFF0C;&#x6211;&#x521A;&#x5F00;&#x59CB;&#x62FF;&#x5230;&#x624B;&#x4E0A;&#x60F3;&#x4E86;&#x5F88;&#x591A;&#xFF0C;&#x4EC0;&#x4E48;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x554A;&#xFF0C;&#x4EC0;&#x4E48;&#x6DF1;&#x641C;&#x5E7F;&#x641C;&#x554A;-&#x6211;&#x90FD;&#x4E0D;&#x4F1A;&#x54C8;&#x54C8;-&#x3002;&#x4F46;&#x662F;&#x770B;&#x4E86;&#x963F;&#x5609;&#x7684;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x604D;&#x7136;&#x5927;&#x609F;&#x3002;"><a href="#&#x672C;&#x9898;&#x662F;&#x4E00;&#x9053;&#x6BD4;&#x8F83;&#x7ECF;&#x5178;&#x7684;&#x6C42;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x9898;&#xFF0C;&#x6211;&#x521A;&#x5F00;&#x59CB;&#x62FF;&#x5230;&#x624B;&#x4E0A;&#x60F3;&#x4E86;&#x5F88;&#x591A;&#xFF0C;&#x4EC0;&#x4E48;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x554A;&#xFF0C;&#x4EC0;&#x4E48;&#x6DF1;&#x641C;&#x5E7F;&#x641C;&#x554A;-&#x6211;&#x90FD;&#x4E0D;&#x4F1A;&#x54C8;&#x54C8;-&#x3002;&#x4F46;&#x662F;&#x770B;&#x4E86;&#x963F;&#x5609;&#x7684;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x604D;&#x7136;&#x5927;&#x609F;&#x3002;" class="headerlink" title="&#x672C;&#x9898;&#x662F;&#x4E00;&#x9053;&#x6BD4;&#x8F83;&#x7ECF;&#x5178;&#x7684;&#x6C42;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x9898;&#xFF0C;&#x6211;&#x521A;&#x5F00;&#x59CB;&#x62FF;&#x5230;&#x624B;&#x4E0A;&#x60F3;&#x4E86;&#x5F88;&#x591A;&#xFF0C;&#x4EC0;&#x4E48;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x554A;&#xFF0C;&#x4EC0;&#x4E48;&#x6DF1;&#x641C;&#x5E7F;&#x641C;&#x554A;(&#x6211;&#x90FD;&#x4E0D;&#x4F1A;&#x54C8;&#x54C8;)&#x3002;&#x4F46;&#x662F;&#x770B;&#x4E86;&#x963F;&#x5609;&#x7684;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x604D;&#x7136;&#x5927;&#x609F;&#x3002;"></a>&#x672C;&#x9898;&#x662F;&#x4E00;&#x9053;&#x6BD4;&#x8F83;&#x7ECF;&#x5178;&#x7684;&#x6C42;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x9898;&#xFF0C;&#x6211;&#x521A;&#x5F00;&#x59CB;&#x62FF;&#x5230;&#x624B;&#x4E0A;&#x60F3;&#x4E86;&#x5F88;&#x591A;&#xFF0C;&#x4EC0;&#x4E48;&#x52A8;&#x6001;&#x89C4;&#x5212;&#x554A;&#xFF0C;&#x4EC0;&#x4E48;&#x6DF1;&#x641C;&#x5E7F;&#x641C;&#x554A;(&#x6211;&#x90FD;&#x4E0D;&#x4F1A;&#x54C8;&#x54C8;)&#x3002;&#x4F46;&#x662F;&#x770B;&#x4E86;&#x963F;&#x5609;&#x7684;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x604D;&#x7136;&#x5927;&#x609F;&#x3002;</h4><a id="more"></a>    
+<hr>
+<h2 id="&#x601D;&#x8DEF;"><a href="#&#x601D;&#x8DEF;" class="headerlink" title="&#x601D;&#x8DEF;"></a>&#x601D;&#x8DEF;</h2><h4 id="1-&#x672C;&#x9898;&#x7684;&#x8981;&#x6C42;&#x662F;-&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#xFF0C;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x63A5;&#x7740;&#x8F93;&#x5165;&#x5143;&#x7D20;&#xFF0C;&#x6700;&#x540E;&#x6C42;&#x51FA;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x548C;-&#x5373;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x548C;&#x662F;&#x6240;&#x6709;&#x5B50;&#x5E8F;&#x5217;&#x91CC;&#x6700;&#x5927;&#x7684;-&#x3002;"><a href="#1-&#x672C;&#x9898;&#x7684;&#x8981;&#x6C42;&#x662F;-&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#xFF0C;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x63A5;&#x7740;&#x8F93;&#x5165;&#x5143;&#x7D20;&#xFF0C;&#x6700;&#x540E;&#x6C42;&#x51FA;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x548C;-&#x5373;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x548C;&#x662F;&#x6240;&#x6709;&#x5B50;&#x5E8F;&#x5217;&#x91CC;&#x6700;&#x5927;&#x7684;-&#x3002;" class="headerlink" title="1.&#x672C;&#x9898;&#x7684;&#x8981;&#x6C42;&#x662F;:&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#xFF0C;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x63A5;&#x7740;&#x8F93;&#x5165;&#x5143;&#x7D20;&#xFF0C;&#x6700;&#x540E;&#x6C42;&#x51FA;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x548C;(&#x5373;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x548C;&#x662F;&#x6240;&#x6709;&#x5B50;&#x5E8F;&#x5217;&#x91CC;&#x6700;&#x5927;&#x7684;)&#x3002;"></a>1.&#x672C;&#x9898;&#x7684;&#x8981;&#x6C42;&#x662F;:&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x5E8F;&#x5217;&#xFF0C;&#x8F93;&#x5165;&#x5E8F;&#x5217;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#xFF0C;&#x63A5;&#x7740;&#x8F93;&#x5165;&#x5143;&#x7D20;&#xFF0C;&#x6700;&#x540E;&#x6C42;&#x51FA;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x548C;(&#x5373;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#x7684;&#x548C;&#x662F;&#x6240;&#x6709;&#x5B50;&#x5E8F;&#x5217;&#x91CC;&#x6700;&#x5927;&#x7684;)&#x3002;</h4><h4 id="2-&#x8981;&#x6C42;-&#x4E3B;&#x8981;&#x662F;&#x8F93;&#x51FA;&#x3002;-1-&#x82E5;"><a href="#2-&#x8981;&#x6C42;-&#x4E3B;&#x8981;&#x662F;&#x8F93;&#x51FA;&#x3002;-1-&#x82E5;" class="headerlink" title="2.&#x8981;&#x6C42;:&#x4E3B;&#x8981;&#x662F;&#x8F93;&#x51FA;&#x3002;(1):&#x82E5;"></a>2.&#x8981;&#x6C42;:&#x4E3B;&#x8981;&#x662F;&#x8F93;&#x51FA;&#x3002;(1):&#x82E5;<figure class="highlight plain"><figcaption><span>&gt; 0```&#x5219;&#x8F93;&#x51FA;&#x5E8F;&#x5217;&#x548C;&#x4EE5;&#x53CA;&#x6B64;&#x5B50;&#x5E8F;&#x5217;&#x7684;&#x5F00;&#x5934;&#x548C;&#x7ED3;&#x5C3E;&#x3002;(2):&#x82E5;```max_sum &lt; 0```&#x5219;&#x8F93;&#x51FA;0&#xFF0C;&#x6D4B;&#x8BD5;&#x6570;&#x636E;&#x7684;&#x5934;&#x548C;&#x5C3E;&#xFF0C;&#x4E2D;&#x95F4;&#x7528;&#x7A7A;&#x683C;&#x9694;&#x5F00;&#x3002;</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 3.&#x4E0D;&#x7528;&#x6570;&#x7EC4;&#xFF0C;&#x91C7;&#x7528;&#x8FB9;&#x8F93;&#x5165;&#x8FB9;&#x8BA1;&#x7B97;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x8BE6;&#x7EC6;&#x89C1;&#x4EE3;&#x7801;&#x6CE8;&#x91CA;&#x3002;</div><div class="line"></div><div class="line">## &#x4EE3;&#x7801;</div><div class="line">```c++</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">const int INF = 0x3f3f3f3f;//&#x5E38;&#x89C1;&#x7684;&#xFF0C;&#x4F4D;&#x4E8E;stdio.h&#x4E2D;</div><div class="line"></div><div class="line">int main(){</div><div class="line">	</div><div class="line">	int k;</div><div class="line">	int x;</div><div class="line">	int i;</div><div class="line"></div><div class="line">	int from&#xFF1B;//&#x8FD9;&#x662F;&#x7CBE;&#x5999;&#x4E4B;&#x5904;&#xFF0C;&#x5373;&#x505A;&#x6700;&#x5927;&#x5B50;&#x5E8F;&#x5217;&#x5F00;&#x5934;&#x7684;&#x6807;&#x5FD7;&#x4F4D;&#x53C8;&#x505A;&#x4E86;sum&#x662F;&#x5426;&#x5C0F;&#x4E8E;&#x96F6;&#x7684;&#x6807;&#x5FD7;&#x4F4D;</div><div class="line">    </div><div class="line">	int sum,max_sum;</div><div class="line">	int max_from ,max_to;</div><div class="line"></div><div class="line">	int first_ele, last_ele;</div><div class="line"></div><div class="line">	while(scanf(&quot;%d&quot;,&amp;k)!=EOF){</div><div class="line">		max_sum = -INF;</div><div class="line">		sum = 0;</div><div class="line">		for(i = 0; i &lt; k; ++i){</div><div class="line">			scanf(&quot;%d&quot;,&amp;x);</div><div class="line">			if(i == 0){</div><div class="line">				first_ele = x;</div><div class="line">				from = x;</div><div class="line">			}</div><div class="line">			if(i == k-1){</div><div class="line">				last_ele = x;</div><div class="line">			}</div><div class="line">			if(from == -1){//&#x6B64;&#x65F6;sum&lt;0,&#x5373;&#x65E0;&#x8BBA;&#x540E;&#x8FB9;&#x7684;&#x6570;&#x5B57;&#x591A;&#x5927;&#xFF0C;&#x53EA;&#x8981;&#x6B64;&#x65F6;sum&lt;0,&#x5F80;&#x540E;&#x52A0;&#x90FD;&#x4F1A;&#x51CF;&#x53BB;&#x4E00;&#x4E2A;&#x6570;&#xFF0C;&#x4E8E;&#x662F;&#x5728;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x4ECE;&#x4E4B;&#x524D;&#x7684;&#x5E8F;&#x5217;&#x6570;&#x5B57;&#x7B97;&#x8D77;&#x4E86;</div><div class="line">				from = x;</div><div class="line">			}</div><div class="line">			sum += x;</div><div class="line">			if(sum &gt; max_sum){</div><div class="line">				max_sum = sum;</div><div class="line">				max_to = x;</div><div class="line">				max_from = from;</div><div class="line">			}</div><div class="line"></div><div class="line">			if(sum &lt; 0){</div><div class="line">				sum = 0;</div><div class="line">				from = -1;</div><div class="line">			}</div><div class="line">		}</div><div class="line">		if(max_sum &lt; 0){</div><div class="line">			printf(&quot;0 %d %d&quot;,first_ele, last_ele);</div><div class="line">		}</div><div class="line">		else{</div><div class="line">			printf(&quot;%d %d %d&quot;,max_sum, max_from, max_to);</div><div class="line">		}</div><div class="line">	}</div><div class="line">	return 0;</div><div class="line">}</div></pre></td></tr></table></figure></h4>
+                        
+                    </div>
+
+                    
+                    
+                    
+
+                    <div class="description post-description">
+    <span class="post-description-item">
+        <time datetime="2017-08-27T16:01:46.000Z" itemprop="datePublished">2017-08-28</time>
+
+    </span>
+    <span class="post-description-item">
+        
+
+    <span>
+        <i class="tags icon"></i>
+    </span>
+
+    
+    <span class="ui tiny label">
+        <a href="/tags/algorithm/">algorithm</a>
+    </span>
+
+    
+
+    </span>
+</div>
+
+                </div>
+                
+                <div id="pagination" class="nav-web ui text container pagination">
+
+    <div class="ui stackable two column divided grid container">
+        <div class="row">
+            <div class="column nav-left">
+                
+
+                <a href="/2017/08/29/every-day-a-algorithm-elevator/" class="ui tiny button">
+
+                    <i class="angle left icon"></i>
+                    
+                    every day a algorithm elevator
+                    
+
+                </a>
+
+                
+            </div>
+            <div class="column nav-right">
+                
+
+                <a href="/2017/08/24/every-day-a-algorithm/" class="ui tiny button">
+                    
+                    every day a algorithm
+                    
+                    <i class="angle right icon"></i></a>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+                
+            </div>
+
+            
+            <div class="three wide computer three wide tablet column">
+
+                <div class="ui sticky article-toc" id="article-toc">
+                    <!-- toc -->
+                    <ol class="ui ordered list"><li><a href="#导语：最大子序列"><span>导语：最大子序列</span></a><ol><li><a href="#本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊-我都不会哈哈-。但是看了阿嘉的代码后，恍然大悟。"><span>本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。</span></a></li></ol></li></ol></li><li><a href="#思路"><span>思路</span></a><ol><li><a href="#1-本题的要求是-给定一个序列，输入序列元素个数，接着输入元素，最后求出这个序列的最大子序列的和-即这个序列的和是所有子序列里最大的-。"><span>1.本题的要求是:给定一个序列，输入序列元素个数，接着输入元素，最后求出这个序列的最大子序列的和(即这个序列的和是所有子序列里最大的)。</span></a></li><li><a href="#2-要求-主要是输出。-1-若"><span>2.要求:主要是输出。(1):若> 0```则输出序列和以及此子序列的开头和结尾。(2):若```max_sum < 0```则输出0，测试数据的头和尾，中间用空格隔开。1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#### 3.不用数组，采用边输入边计算的方式。详细见代码注释。## 代码```c++#include <stdio.h>#include <stdlib.h>#include <iostream>using namespace std;const int INF = 0x3f3f3f3f;//常见的，位于stdio.h中int main(){		int k;	int x;	int i;	int from；//这是精妙之处，即做最大子序列开头的标志位又做了sum是否小于零的标志位    	int sum,max_sum;	int max_from ,max_to;	int first_ele, last_ele;	while(scanf("%d",&k)!=EOF){		max_sum = -INF;		sum = 0;		for(i = 0; i < k; ++i){			scanf("%d",&x);			if(i == 0){				first_ele = x;				from = x;			}			if(i == k-1){				last_ele = x;			}			if(from == -1){//此时sum<0,即无论后边的数字多大，只要此时sum<0,往后加都会减去一个数，于是在这里就不从之前的序列数字算起了				from = x;			}			sum += x;			if(sum > max_sum){				max_sum = sum;				max_to = x;				max_from = from;			}			if(sum < 0){				sum = 0;				from = -1;			}		}		if(max_sum < 0){			printf("0 %d %d",first_ele, last_ele);		}		else{			printf("%d %d %d",max_sum, max_from, max_to);		}	}	return 0;}</span></a></li></ol></li></ol></li></ol>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div class="ui vertical footer segment">
+    <div class="ui center aligned container">
+        <div class="ui inverted section divider"></div>
+        &copy; 2018 <a href="/">Zoubin</a>,
+        Powered by <a href="https://github.com/henryhuang/hexo-theme-aloha" target="_blank">Aloha</a> and <a
+                href="http://hexo.io/" target="_blank">Hexo</a>.
+    </div>
+</div>
+
+    </div>
+
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+
+<script src="//cdn.bootcss.com/semantic-ui/2.2.4/semantic.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch/3.18.1/algoliasearch.min.js"></script>
+
+<script src="//cdn.bootcss.com/algoliasearch-helper-js/2.13.0/algoliasearch.helper.min.js"></script>
+
+<script src="/js/semantic-ui-algolia.js"></script>
+
+<script src="/js/aloha-events.js"></script>
+
+
+
+</body>
+</html>
