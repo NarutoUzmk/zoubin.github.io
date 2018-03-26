@@ -1,227 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>every day a algorithm 02 | Zoubin&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="pat 1007     导语：最大子序列本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。">
-<meta name="keywords" content="algorithm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="every day a algorithm 02">
-<meta property="og:url" content="http://yoursite.com/2017/08/28/every-day-a-algorithm-02/index.html">
-<meta property="og:site_name" content="Zoubin&#39;s blog">
-<meta property="og:description" content="pat 1007     导语：最大子序列本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-27T16:25:21.426Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="every day a algorithm 02">
-<meta name="twitter:description" content="pat 1007     导语：最大子序列本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。">
-  
-    <link rel="alternate" href="/atom.xml" title="Zoubin&#39;s blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
+extends base
 
-</head>
+block title
+  title= page.title + " | " + config.title
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Zoubin&#39;s blog</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">i can fly</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-every-day-a-algorithm-02" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/28/every-day-a-algorithm-02/" class="article-date">
-  <time datetime="2017-08-27T16:01:46.000Z" itemprop="datePublished">2017-08-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      every day a algorithm 02
-    </h1>
-  
+block main
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><a href="https://www.patest.cn/contests/pat-a-practise/1007" target="_blank" rel="external">pat 1007</a>  </p>
-</blockquote>
-<hr>
-<h2 id="导语：最大子序列"><a href="#导语：最大子序列" class="headerlink" title="导语：最大子序列"></a>导语：最大子序列</h2><h4 id="本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊-我都不会哈哈-。但是看了阿嘉的代码后，恍然大悟。"><a href="#本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊-我都不会哈哈-。但是看了阿嘉的代码后，恍然大悟。" class="headerlink" title="本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。"></a>本题是一道比较经典的求最大子序列的题，我刚开始拿到手上想了很多，什么动态规划啊，什么深搜广搜啊(我都不会哈哈)。但是看了阿嘉的代码后，恍然大悟。</h4><a id="more"></a>    
-<hr>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h4 id="1-本题的要求是-给定一个序列，输入序列元素个数，接着输入元素，最后求出这个序列的最大子序列的和-即这个序列的和是所有子序列里最大的-。"><a href="#1-本题的要求是-给定一个序列，输入序列元素个数，接着输入元素，最后求出这个序列的最大子序列的和-即这个序列的和是所有子序列里最大的-。" class="headerlink" title="1.本题的要求是:给定一个序列，输入序列元素个数，接着输入元素，最后求出这个序列的最大子序列的和(即这个序列的和是所有子序列里最大的)。"></a>1.本题的要求是:给定一个序列，输入序列元素个数，接着输入元素，最后求出这个序列的最大子序列的和(即这个序列的和是所有子序列里最大的)。</h4><h4 id="2-要求-主要是输出。-1-若"><a href="#2-要求-主要是输出。-1-若" class="headerlink" title="2.要求:主要是输出。(1):若"></a>2.要求:主要是输出。(1):若<figure class="highlight plain"><figcaption><span>> 0```则输出序列和以及此子序列的开头和结尾。(2):若```max_sum < 0```则输出0，测试数据的头和尾，中间用空格隔开。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">#### 3.不用数组，采用边输入边计算的方式。详细见代码注释。</div><div class="line"></div><div class="line">## 代码</div><div class="line">```c++</div><div class="line">#include &lt;stdio.h&gt;</div><div class="line">#include &lt;stdlib.h&gt;</div><div class="line">#include &lt;iostream&gt;</div><div class="line"></div><div class="line">using namespace std;</div><div class="line"></div><div class="line">const int INF = 0x3f3f3f3f;//常见的，位于stdio.h中</div><div class="line"></div><div class="line">int main()&#123;</div><div class="line">	</div><div class="line">	int k;</div><div class="line">	int x;</div><div class="line">	int i;</div><div class="line"></div><div class="line">	int from；//这是精妙之处，即做最大子序列开头的标志位又做了sum是否小于零的标志位</div><div class="line">    </div><div class="line">	int sum,max_sum;</div><div class="line">	int max_from ,max_to;</div><div class="line"></div><div class="line">	int first_ele, last_ele;</div><div class="line"></div><div class="line">	while(scanf(&quot;%d&quot;,&amp;k)!=EOF)&#123;</div><div class="line">		max_sum = -INF;</div><div class="line">		sum = 0;</div><div class="line">		for(i = 0; i &lt; k; ++i)&#123;</div><div class="line">			scanf(&quot;%d&quot;,&amp;x);</div><div class="line">			if(i == 0)&#123;</div><div class="line">				first_ele = x;</div><div class="line">				from = x;</div><div class="line">			&#125;</div><div class="line">			if(i == k-1)&#123;</div><div class="line">				last_ele = x;</div><div class="line">			&#125;</div><div class="line">			if(from == -1)&#123;//此时sum&lt;0,即无论后边的数字多大，只要此时sum&lt;0,往后加都会减去一个数，于是在这里就不从之前的序列数字算起了</div><div class="line">				from = x;</div><div class="line">			&#125;</div><div class="line">			sum += x;</div><div class="line">			if(sum &gt; max_sum)&#123;</div><div class="line">				max_sum = sum;</div><div class="line">				max_to = x;</div><div class="line">				max_from = from;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			if(sum &lt; 0)&#123;</div><div class="line">				sum = 0;</div><div class="line">				from = -1;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		if(max_sum &lt; 0)&#123;</div><div class="line">			printf(&quot;0 %d %d&quot;,first_ele, last_ele);</div><div class="line">		&#125;</div><div class="line">		else&#123;</div><div class="line">			printf(&quot;%d %d %d&quot;,max_sum, max_from, max_to);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/28/every-day-a-algorithm-02/" data-id="cjf7uysul0000dzh9e1k67sb2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/08/29/every-day-a-algorithm-elevator/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          every day a algorithm elevator
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/08/24/every-day-a-algorithm/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">every day a algorithm</div>
-    </a>
-  
-</nav>
+  .wrapper
+    .container.post-header
+      h1: = page.title
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elevator/">elevator</a></li></ul>
-    </div>
-  </div>
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/elevator/" style="font-size: 10px;">elevator</a>
-    </div>
-  </div>
+  article
+    .container.post
+      != page.content
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
-    </div>
-  </div>
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/08/29/every-day-a-algorithm-elevator/">every day a algorithm elevator</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/28/every-day-a-algorithm-02/">every day a algorithm 02</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/24/every-day-a-algorithm/">every day a algorithm</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 Zoubin<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-  </div>
-</body>
-</html>

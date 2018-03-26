@@ -1,232 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>every day a algorithm | Zoubin&#39;s blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我的算法之路&amp;emsp;&amp;emsp;&amp;emsp;PAT pat 1005     导语:这题算是一道字符串排序题，主要重点是几个函数的用法:">
-<meta name="keywords" content="algorithm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="every day a algorithm">
-<meta property="og:url" content="http://yoursite.com/2017/08/24/every-day-a-algorithm/index.html">
-<meta property="og:site_name" content="Zoubin&#39;s blog">
-<meta property="og:description" content="我的算法之路&amp;emsp;&amp;emsp;&amp;emsp;PAT pat 1005     导语:这题算是一道字符串排序题，主要重点是几个函数的用法:">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-25T15:55:34.888Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="every day a algorithm">
-<meta name="twitter:description" content="我的算法之路&amp;emsp;&amp;emsp;&amp;emsp;PAT pat 1005     导语:这题算是一道字符串排序题，主要重点是几个函数的用法:">
-  
-    <link rel="alternate" href="/atom.xml" title="Zoubin&#39;s blog" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
+extends base
 
-</head>
+block title
+  title= page.title + " | " + config.title
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Zoubin&#39;s blog</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">i can fly</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-every-day-a-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/24/every-day-a-algorithm/" class="article-date">
-  <time datetime="2017-08-23T16:06:32.000Z" itemprop="datePublished">2017-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      every day a algorithm
-    </h1>
-  
+block main
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="我的算法之路"><a href="#我的算法之路" class="headerlink" title="我的算法之路"></a>我的算法之路</h1><h3 id="emsp-emsp-emsp-PAT"><a href="#emsp-emsp-emsp-PAT" class="headerlink" title="&emsp;&emsp;&emsp;PAT"></a>&emsp;&emsp;&emsp;PAT</h3><blockquote>
-<p><a href="https://www.patest.cn/contests/pat-a-practise/1005" target="_blank" rel="external">pat 1005</a>   </p>
-</blockquote>
-<h2 id="导语"><a href="#导语" class="headerlink" title="导语:"></a>导语:</h2><h4 id="这题算是一道字符串排序题，主要重点是几个函数的用法"><a href="#这题算是一道字符串排序题，主要重点是几个函数的用法" class="headerlink" title="这题算是一道字符串排序题，主要重点是几个函数的用法:"></a>这题算是一道字符串排序题，主要重点是几个函数的用法:</h4><a id="more"></a>
-<h4 id="1-qsort-函数"><a href="#1-qsort-函数" class="headerlink" title="1.qsort()函数"></a>1.qsort()函数</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">qsort(<span class="keyword">void</span> *base, <span class="keyword">size_t</span> size, <span class="keyword">int</span>(* comparator)(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b))</div><div class="line">```  </div><div class="line">#### 包含在`&lt;stdlib.h&gt;`头文件中,这个函数会根据你给的比较条件(第三个参数)来进行快速排序，原理是通过移动指针。排序后的结果任然放在原数组中。</div><div class="line">```c++</div><div class="line">void qsort(a,b,sizeof(),cmp);</div></pre></td></tr></table></figure>
-<hr>
-<h4 id="一-注意："><a href="#一-注意：" class="headerlink" title="一.注意："></a>一.注意：</h4><h4 id="1-使用这个函数必须自己写一个比较函数，而且这个函数有一定要求"><a href="#1-使用这个函数必须自己写一个比较函数，而且这个函数有一定要求" class="headerlink" title="1.使用这个函数必须自己写一个比较函数，而且这个函数有一定要求:"></a>1.使用这个函数必须自己写一个比较函数，而且这个函数有一定要求:</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span> *a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span></div></pre></td></tr></table></figure>
-<h4 id="1-这个函数名字是任起的，但是返回值必须是整形"><a href="#1-这个函数名字是任起的，但是返回值必须是整形" class="headerlink" title="(1).这个函数名字是任起的，但是返回值必须是整形"></a>(1).这个函数名字是任起的，但是返回值必须是整形</h4><h4 id="2-两个参数类型都必须是const-void-a和const-void-b（a-b任意名）。如果是对int升序排序，则返回a-b-如果a比b大则返回一个正值，反之则返回一个负值，相等返回0-若对其降序排序，则返回b-a，规则同上。"><a href="#2-两个参数类型都必须是const-void-a和const-void-b（a-b任意名）。如果是对int升序排序，则返回a-b-如果a比b大则返回一个正值，反之则返回一个负值，相等返回0-若对其降序排序，则返回b-a，规则同上。" class="headerlink" title="(2).两个参数类型都必须是const void *a和const void *b（a,b任意名）。如果是对int升序排序，则返回a-b,如果a比b大则返回一个正值，反之则返回一个负值，相等返回0,若对其降序排序，则返回b-a，规则同上。"></a>(2).两个参数类型都必须是<code>const void *a</code>和<code>const void *b</code>（a,b任意名）。如果是对<code>int</code>升序排序，则返回<code>a-b</code>,如果a比b大则返回一个正值，反之则返回一个负值，相等返回0,若对其降序排序，则返回<code>b-a</code>，规则同上。</h4><h4 id="3-在函数内部必须对a-b进行强制类型转换后才能返回正确的值。"><a href="#3-在函数内部必须对a-b进行强制类型转换后才能返回正确的值。" class="headerlink" title="(3).在函数内部必须对a,b进行强制类型转换后才能返回正确的值。"></a>(3).在函数内部必须对a,b进行<text style="color:red;">强制类型转换</text>后才能返回正确的值。</h4><h4 id="2-第一个参数-是参与排序的数组名-或者理解为开始排序的首地址-。"><a href="#2-第一个参数-是参与排序的数组名-或者理解为开始排序的首地址-。" class="headerlink" title="2.第一个参数:是参与排序的数组名(或者理解为开始排序的首地址)。"></a>2.第一个参数:是参与排序的数组名(或者理解为开始排序的首地址)。</h4><h3 id="3-第二个参数是参与排序的元素个数。"><a href="#3-第二个参数是参与排序的元素个数。" class="headerlink" title="3.第二个参数是参与排序的元素个数。"></a>3.第二个参数是参与排序的元素个数。</h3><h3 id="4-第三个参数是参与排序的单元大小。"><a href="#4-第三个参数是参与排序的单元大小。" class="headerlink" title="4.第三个参数是参与排序的单元大小。"></a>4.第三个参数是参与排序的单元大小。</h3><hr>
-<h2 id="二-细节"><a href="#二-细节" class="headerlink" title="二.细节"></a>二.细节</h2><h4 id="1-快速排序使用时间是不稳定的，最好的时间复杂度为-O-n-最差时间复杂度为-O-n-2-平均时间复杂度为-Onlog-n-指的是平均时间。"><a href="#1-快速排序使用时间是不稳定的，最好的时间复杂度为-O-n-最差时间复杂度为-O-n-2-平均时间复杂度为-Onlog-n-指的是平均时间。" class="headerlink" title="1.快速排序使用时间是不稳定的，最好的时间复杂度为(O(n)),最差时间复杂度为(O(n^2)).平均时间复杂度为(Onlog(n))指的是平均时间。"></a>1.快速排序使用时间是不稳定的，最好的时间复杂度为(O(n)),最差时间复杂度为(O(n^2)).平均时间复杂度为(Onlog(n))指的是平均时间。</h4><h4 id="2-快排在排列相同的元素时会出现不稳定状态，可能顺序出现不一样，具体表现为如果想在我们有三个元素5-5-5。在快速排序中是认为这三个元素是不同的，假定初始为3a-3b-3c-排序后就不一定是这个结构了。所以特定场合使用结构体来稳定结构。"><a href="#2-快排在排列相同的元素时会出现不稳定状态，可能顺序出现不一样，具体表现为如果想在我们有三个元素5-5-5。在快速排序中是认为这三个元素是不同的，假定初始为3a-3b-3c-排序后就不一定是这个结构了。所以特定场合使用结构体来稳定结构。" class="headerlink" title="2.快排在排列相同的元素时会出现不稳定状态，可能顺序出现不一样，具体表现为如果想在我们有三个元素5,5,5。在快速排序中是认为这三个元素是不同的，假定初始为3a,3b,3c,排序后就不一定是这个结构了。所以特定场合使用结构体来稳定结构。"></a>2.快排在排列相同的元素时会出现不稳定状态，可能顺序出现不一样，具体表现为如果想在我们有三个元素5,5,5。在快速排序中是认为这三个元素是不同的，假定初始为3a,3b,3c,排序后就不一定是这个结构了。所以特定场合使用结构体来稳定结构。</h4><h2 id="三-一些其他函数"><a href="#三-一些其他函数" class="headerlink" title="三.一些其他函数:"></a>三.一些其他函数:</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sscanf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *a, format, [arguement]...)</span></span></div><div class="line">```  </div><div class="line">### 用于格式化输入一字符串到指针a所指向的位置的数据到参数位置，格式为format。</div><div class="line">```C</div><div class="line"><span class="keyword">int</span> h, m, s;</div><div class="line">    <span class="built_in">sscanf</span>(a, <span class="string">"%d:%d:%d"</span>, &amp;h, &amp;m, &amp;s);</div></pre></td></tr></table></figure>
-<hr>
-<h3 id="sprintf函数"><a href="#sprintf函数" class="headerlink" title="sprintf函数"></a>sprintf函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sprintf</span><span class="params">(<span class="keyword">char</span> *buffer,<span class="keyword">const</span> <span class="keyword">char</span> *format ，[arguement...])</span></span>;</div></pre></td></tr></table></figure>
-<h4 id="该函数包含在stdio-h中，在完成数据类型转换到字符类型中应用广泛。"><a href="#该函数包含在stdio-h中，在完成数据类型转换到字符类型中应用广泛。" class="headerlink" title="该函数包含在stdio.h中，在完成数据类型转换到字符类型中应用广泛。"></a>该函数包含在stdio.h中，在完成数据类型转换到字符类型中应用广泛。</h4><h4 id="参数列表"><a href="#参数列表" class="headerlink" title="参数列表"></a>参数列表</h4><h4 id="1-buffer-char型指针，指向将要写入的字符串缓冲区"><a href="#1-buffer-char型指针，指向将要写入的字符串缓冲区" class="headerlink" title="1.buffer:char型指针，指向将要写入的字符串缓冲区"></a>1.buffer:char型指针，指向将要写入的字符串缓冲区</h4><h4 id="2-format-格式化字符串"><a href="#2-format-格式化字符串" class="headerlink" title="2.format:格式化字符串"></a>2.format:格式化字符串</h4><h4 id="3-arguement-…-可选参数"><a href="#3-arguement-…-可选参数" class="headerlink" title="3.[arguement]…:可选参数"></a>3.[arguement]…:可选参数</h4><h4 id="4-返回值-写入buffer的字符数，出错返回-1"><a href="#4-返回值-写入buffer的字符数，出错返回-1" class="headerlink" title="4.返回值:写入buffer的字符数，出错返回-1."></a>4.返回值:写入buffer的字符数，出错返回-1.</h4><h4 id="5-’-0’不计入其中"><a href="#5-’-0’不计入其中" class="headerlink" title="5.’\0’不计入其中"></a>5.’\0’不计入其中</h4><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3> <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">char</span>  buffer[<span class="number">200</span>], s[] = <span class="string">"computer"</span>;</div><div class="line"><span class="built_in">sprintf</span>( buffer,    <span class="string">"   String:    %s\n"</span>, s);</div><div class="line"><span class="built_in">printf</span>(buffer);</div></pre></td></tr></table></figure>
-<p> 输出 computer  </p>
-<hr>
-<h3 id="四-BUFSIZ"><a href="#四-BUFSIZ" class="headerlink" title="四.BUFSIZ"></a>四.BUFSIZ</h3><h4 id="bufsiz-stdio-h里面的一个宏定义"><a href="#bufsiz-stdio-h里面的一个宏定义" class="headerlink" title="bufsiz:stdio.h里面的一个宏定义"></a>bufsiz:stdio.h里面的一个宏定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> BUFSIZ</span></div><div class="line">    define BUFSIZ_IO_BUFSIZ</div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line">   stdio.h:<span class="meta"># <span class="meta-keyword">define</span> BUFSIZ _IO_BUFSIZ</span></div><div class="line">      libio.h:<span class="meta">#<span class="meta-keyword">define</span> _IO_BUFSIZ _G_BUFSIZ</span></div><div class="line">         _G_config.h:<span class="meta">#<span class="meta-keyword">define</span> _G_BUFSIZ 8192</span></div></pre></td></tr></table></figure>
-<p>程序输出时，为减轻系统负担，可以先将要输出的字符保存起来，即存入缓存区，<br>当达到输出条件是行缓。BUFSIZ为系统默认的缓冲区大小。</p>
+  // gallery that comes before the header
+  if page.photos
+     if page.photos.length
+      .article-gallery
+        .article-gallery-photos.container
+          for photo in page.photos
+            a.article-gallery-img.fancybox(href=url_for(photo), rel="gallery_" + page._id)
+              img(src=url_for(photo), itemprop="image")
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/08/24/every-day-a-algorithm/" data-id="cjf7uysuu0003dzh9ah29pkwp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+  .wrapper
+    .container.post-header
+      h1: = page.title
 
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/08/28/every-day-a-algorithm-02/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          every day a algorithm 02
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/elevator/">elevator</a></li></ul>
-    </div>
-  </div>
+  .wrapper
+    .container.meta
+      .post-time= page.date.format(config.date_format)
+      if (page.categories && page.categories.length)
+        .post-categories
+          != list_categories(page.categories, {show_count: false, class: 'post-category', style: 'none', separator: '>'})
+      if (page.tags && page.tags.length)
+        .post-tags
+          != list_tags(page.tags, {show_count: false, class: 'post-tag', style:'none', separator:'/'})
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/elevator/" style="font-size: 10px;">elevator</a>
-    </div>
-  </div>
+  article
+    .container.post
+      != page.content
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
-    </div>
-  </div>
+    // comment system
+    .container
+      hr
+      include _partial/comments
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2017/08/29/every-day-a-algorithm-elevator/">every day a algorithm elevator</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/28/every-day-a-algorithm-02/">every day a algorithm 02</a>
-          </li>
-        
-          <li>
-            <a href="/2017/08/24/every-day-a-algorithm/">every day a algorithm</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 Zoubin<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-  </div>
-</body>
-</html>
